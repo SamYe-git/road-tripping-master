@@ -85,7 +85,7 @@ Built from my Mini Project 3 (SamYe-git/road-trip-planner); every feature below 
 ## What I do not know yet
 
 - **Can the model reliably answer in JSON with real town names?** My code needs to read its reply. If it adds extra text or invents towns, the geocoding will fail.
-  - What I tried: I sent the model my instructions and "Austin to Boston, max 8 hours a day". It [gave clean JSON / added extra text / named a town that doesn't exist], so [what I'll change].
+  - What I tried:   - What I tried: I called the model through my oim3690 Vercel function with my instructions and "Austin to Boston, max 8 hours a day". It returned clean JSON with four real overnight towns (Little Rock, Knoxville, Hagerstown, Boston), so the JSON format works. But its reasoning showed it guessed the hours itself ("~520 mi, 7h45"), which confirms my code has to check every day with OSRM instead of trusting the model. Also, 543 of its 672 output tokens were reasoning, so with a 1000-token limit a longer trip could cut the JSON off; my function needs a higher limit and a check that the JSON parses before showing anythin.
 - **How to make the share link private enough:** a random `share_id` in the URL, and Row Level Security that only allows reading rows where `is_shared` is true.
 - **Whether Supabase email sign-in links work smoothly on my phone.**
 - **Keeping it running after the course:** the Babson key can't be deployed, so I need my own OpenRouter key with a credit limit, and a free Supabase project pauses after a week without use.
