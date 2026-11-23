@@ -19,7 +19,7 @@ My own road trip planner, one I will keep using, where an AI copilot turns my pl
 
 ## Who it is for
 
-Me and [Name], who drive long trips together (Texas to Boston). Google Maps and Apple Maps give one total time, not "where do we sleep each night if we drive 8 hours a day", nobody tells us who should drive which part, and our plan ends up in a group chat that nobody can find later. I want one tool that is mine, that remembers every trip I've taken, and that I keep using after this class.
+Me, who drive long trips together. Google Maps and Apple Maps give one total time, not "where do we sleep each night if we drive 8 hours a day", nobody tells us who should drive which part, and our plan ends up in a group chat that nobody can find later. I want one tool that is mine, that remembers every trip I've taken, and that I keep using after this class. Also, sometime, we need to pivot and change the plan and go to somewhere that was not in the plan. so we need the web tool to make the plan. 
 
 Built from my Mini Project 3 (SamYe-git/road-trip-planner); every feature below is one that project does not have.
 
@@ -49,8 +49,7 @@ Built from my Mini Project 3 (SamYe-git/road-trip-planner); every feature below 
 2. **Driver rotation:** enter two or more drivers and a longest stint; each leg is assigned a driver so no one drives longer than that in a row, and each driver's total hours are shown.
 3. **Accounts and sync:** sign in, save trips to Supabase, see them on phone and laptop.
 4. **Share link:** a read-only page of the trip that a friend can open without an account.
-5. **Weather at arrival:** forecast for each overnight town on the arrival day, with a warning for snow or heavy rain.
-6. **Search anywhere and a map:** search any address or place, or click the map to add a stop; the map shows the stops, the route and the overnight towns.
+5. **Search anywhere and a map:** search any address or place, or click the map to add a stop; the map shows the stops, the route and the overnight towns.
 
 ## States and their tests
 
@@ -66,7 +65,7 @@ Built from my Mini Project 3 (SamYe-git/road-trip-planner); every feature below 
 | Driver rotation | Each leg shows a driver name; totals per driver at the bottom. A leg longer than the stint is split at a rest stop or marked "swap halfway". | Enter "Sam, Alex" with a 2-hour stint, plan Austin to Dallas (about 3 h). I should see the drive split between both names, neither over 2 h. |
 | Over the limit | If an AI day is longer than the limit, that day turns red: "9 h 40 m, over your 8 h limit." | Set the limit to 3 hours and ask "Austin to Boston in 2 days". I should see red days, not a plan that pretends to fit. |
 | Error (model) | "The copilot isn't answering. You can still add stops by hand." The manual planner still works. | Block the copilot request in DevTools, click Plan it. I should see that message and can still add a stop. |
-| Error (route/weather) | "Couldn't get drive times. Check your connection and Retry." with a Retry button; weather failing shows "Forecast unavailable" on the card only. | Turn on Offline in DevTools, click Plan it. I should see the message and a Retry button. |
+| Error (route/weather) | "Couldn't get drive times. Check your connection and Retry." with a Retry button. | Turn on Offline in DevTools, click Plan it. I should see the message and a Retry button. |
 | Loading | Plan it button turns into "Planning…" and is disabled; day cards show a loading line. | Set Network to Slow 4G, click Plan it. I should see "Planning…" and can't click twice. |
 | Long answer | Each reason is cut to 2 lines with "more"; the plan list scrolls inside its panel. | Ask "Explain every possible route in detail". The page shouldn't stretch past the panel. |
 | Signed out | Can use the copilot and see the plan, but Save says "Sign in to save this trip". No trip list. | Open the link in a private window, plan a trip, click Save. I should see the sign-in prompt and no saved trips. |
